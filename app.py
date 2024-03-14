@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://sql6690817:83KC351EUK@sql6.freesqldatabase.com:3306/sql6690817'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://sql6690817:83KC351EUK@sql6.freesqldatabase.com:3306/sql6690817'
 db = SQLAlchemy(app)
 
 class Subs(db.Model):
