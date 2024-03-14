@@ -45,20 +45,3 @@ function openmenu() {
 function closemenu() {
     sidemenu.style.right = "-250px";
 }
-
-// Form entry
-$(document).ready(function(){
-    $(".form").on('submit', function(e){
-        e.preventDefault();
-        var name = $(".name").val();
-        var email = $(".email").val();
-        $.post("https://script.google.com/macros/s/AKfycbx4F6WaEuAJQ2s_MUqGvXHbY7mM4hAiyHvjyZIDZXqG0aqzWLdNY6uK_69p05PVHDcB/exec", {Name: name, Email: email}, function(res) {
-            if(res == 1) {
-                alert("Done");
-            } else {
-                alert("Error");
-            }
-        });
-    });
-});
-
