@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block base %}
+<div class="ainews">
+<form action='/' method="POST" class="form">
+    <h2 class="sub-title">Unsubscribe: The Razor News</h2>
+    <p><i class="fa fa-laptop"></i>The AI News is delivered to you every day at 10 a.m.</p>
+    <input type="email" class="email" name="email" placeholder="Your Email" required>
+    <button type="submit" class="nav-button see-more resume-btn">Unsubscribe</button>
+    <button type="submit" class="nav-button see-more resume-btn" formaction="/razornews">Subscribe</button>
+</form>
+</div>
+{% endblock base %}

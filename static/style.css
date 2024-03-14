@@ -16,6 +16,7 @@ body{
 
 .star-container {
     position: relative;
+    z-index: -1;
 }
 
 .star {
@@ -94,6 +95,7 @@ nav ul li a:hover::after{
   word-break: break-word;
   border: solid 1px #ebebeb;
   text-decoration: none;
+  z-index: 1;
 }
 
 .nav-button:hover{
@@ -230,6 +232,7 @@ nav ul li a:hover::after{
     position: relative;
     overflow: hidden;
     color: #ebebeb;
+    z-index: 1;
 }
 
 .work img{
@@ -344,6 +347,9 @@ nav ul li a:hover::after{
     justify-content: center;
     padding: 2%;
     border-radius: 15px;
+    display: flex;
+    z-index: 1;
+    position: relative;
 }
 
 .contact-right form{
@@ -379,7 +385,6 @@ form .resume-btn{
 
 .ainews{
     height: 100vh;
-    text-align: center;
 }
 
 /* CSS for Small Screen */

@@ -43,9 +43,13 @@ def thankyou():
 def redirect_to_index():
     return redirect('/')
     
-@app.route('/razornews/unsubscribe')
+@app.route('/unsubscribe', methods=['GET', 'POST'])
 def unsubscribe():
-    return render_template ('ainews.html')
+    if request.method == 'POST':
+        email = request.form['email']
+        db.session.delete(email)
+        db.commit()
+    return render_template ('unsubscribe.html')
 
 if __name__ == '__main__':
     with app.app_context():
