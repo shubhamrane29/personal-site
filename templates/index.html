@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubham Rane</title>
-    <link rel="stylesheet" href="static/style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/4080765072.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-</head>
-<body class="'star-container">
+{% extends 'base.html' %}
+{% block base %}
     <div id="header">
         <div class="container">
             <nav>
@@ -108,11 +92,11 @@
                     </div>
                 </div>
                 <div class="work">
-                    <img src="static/images/hpp.jpg" alt="">
+                    <img src="static/images/fras.jpg" alt="">
                     <div class="layer">
-                        <h3>House Price Prediction</h3>
-                        <p>Building a model to predict the future price of a house based on past data and variables such as location, size, and features. The goal is to provide accurate estimates for buyers, sellers, and real estate agents to make informed decisions.</p>
-                        <a href="https://github.com/shubhamrane29/house-price-prediction"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <h3>Facial Recogition Attendance System</h3>
+                        <p>Facial recognition attendance system uses computer vision and face recognition to identify individuals, track their attendance, and provide real-time data. It also offers a user-friendly GUI developed with Tkinter</p>
+                        <a href="https://github.com/shubhamrane29/face-recognition-attendance-system"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <div class="work">
@@ -156,6 +140,7 @@
             <p>Copyright © Shubham Rane</p>
         </div>
     </div>
-    <script src="static/script.js"></script>
-</body>
-</html>
+
+    
+        
+    {% endblock base %}

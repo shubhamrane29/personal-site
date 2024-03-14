@@ -377,6 +377,11 @@ form .resume-btn{
     margin-top: 20px;
 }
 
+.ainews{
+    height: 100vh;
+    text-align: center;
+}
+
 /* CSS for Small Screen */
 
 nav .fas{

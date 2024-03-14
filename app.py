@@ -26,10 +26,26 @@ def home():
         sub = Subs(name=name, email=email)
         db.session.add(sub)
         db.session.commit()
-        return redirect('/')
+        return redirect('/thankyou')
     
     all_subs = Subs.query.all()
     return render_template('index.html', all_subs=all_subs)
+
+@app.route('/razornews')
+def ainew():
+    return render_template ('ainews.html')
+
+@app.route('/thankyou')
+def thankyou():
+    return render_template('thankyou.html')
+
+@app.route('/redirect-to-index', methods=['POST'])
+def redirect_to_index():
+    return redirect('/')
+    
+@app.route('/razornews/unsubscribe')
+def unsubscribe():
+    return render_template ('ainews.html')
 
 if __name__ == '__main__':
     with app.app_context():
