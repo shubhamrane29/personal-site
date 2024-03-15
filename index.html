@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block base %}
+    <div id="header">
+        <div class="container">
+            <nav>
+                <div class='hide' id='sidemenu'>
+                    <ul>
+                        <li><a href="#header">HOME </a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#portfolio">PROJECTS</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                        <a href="https://medium.com/@shubhwrites" class='nav-button'>BLOGS</a>
+                    </ul>
+                    <i class="fas fa-solid fa-times" onclick="closemenu()"></i>
+                </div>
+                <i class="fas fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>            
+            <div class="header-text">
+                <p>HI, I AM</p>
+                <h1>SHUBHAM RANE</h1>
+                <p>& I AM AN <span>IT PROFESSIONAL</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about">
+        <div class="row">
+            <div class="about-col-1">
+                <img style="z-index: 1; position: relative;" src="static/images/user.png">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">ABOUT ME</h1>
+                <p>Hello there! I'm Shubham Rane, an IT Professional with a Master's degree in Data Science and Big Data Analytics. I specialize in crafting predictive models, dissecting extensive datasets, and crafting compelling data visualizations using Python, R, and SQL. Fresh from the completion of my master's degree, I am thrilled to embark on this journey of data exploration and innovation. Join me as I bring data to life!</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills', event)">SKILLS</p>
+                    <p class="tab-links" onclick="opentab('internship', event)"> INTERNSHIP </p>
+                    <p class= "tab-links" onclick="opentab('education', event)"> EDUCATION </p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Python</span><br>Data Cleaning, Data Analysis, Visualization, Machine Learning, Deep Learning, Natural Language Processing, and Data Structure and Algorithms</li>
+                      
+                        <li><span>Power BI / Tableau</span><br>Creating impactful visualizations and interactive dashboards</li>
+                      
+                        <li><span>SQL</span><br>Proficient in managing databases, including Joins, Unions, Aggregation Functions, and Query Optimization</li>
+                      
+                        <li><span>Statistics</span><br>Descriptive Statistics, Inferential Statistics, Probability Distributions, Hypothesis Testing, Regression Analysis, Experimental Design, and Sampling Techniques</li>
+                      
+                        <li><span>Other Tools</span><br>Excel for Data Cleaning, Pivot Tables, Visualization, Formulas & Functions, along with experience in R, SPSS, Tableau, and Minitab</li>
+                      </ul>
+
+                </div>
+
+                <div class="tab-contents" id="internship">
+                    <ul>
+                        <li><span>Century Rayon - Aditya Birla Group</span><br><b>July 2023 - Present</b><br>During this internship, I performed a comprehensive analysis of viscose yarn quality, implementing optimizations in parallel processes to consistently deliver premium results. Methodically collected, cleansed, and statistically validated data to ensure the reliability of findings.</li>
+                        <li><span>TCS ION</span><br><b>October 2022 - January 2023</b><br>The main aim of the virtual internship was to develop a forecasting model predicting the price of future stocks by using machine learning techniques. </li>
+                    </ul>
+                </div>
+
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>Masters in Data Science and Big Data Analytics</span><br>B K Birla College, Kalyan <br>2021 - 2023 <br>CGPA: 9.55</li>
+                        <li><span>Bachlor's in Physics</span><br>G N Khalsa College, Matunga <br>2018 - 2021 <br>CGPA: 7.26</li>
+                        <li><span>H.S.C Science</span><br>G N Khalsa College, Matunga <br>2016 - 2018 <br>Percentage: 72%</li>
+                        <li><span>S.S.C State Board</span><br>IES Modern English School, Dadar <br>Till 2016 <br>Percentage: 86.60%</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">PROJECTS</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="static/images/ain.jpg" alt="">
+                    <div class="layer">
+                        <h3>AI News</h3>
+                        <p>Developed a Python-based AI news system, incorporating web scraping from Google News, automation,
+                            and email integration for daily updates through GitHub Actions. Applied HTML/CSS to create a visually appealing email format, summarizing articles with title, date, author, and link.</p>
+                        <a href="https://thub.com/shubhamrane29/AI-News"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="static/images/ads.jpg" alt="">
+                    <div class="layer">
+                        <h3>Galaxy Analysis</h3>
+                        <p>Used filters like Sato and Meijering were used on FITS data, which revealed distinct features, indicating black holes at the core. Density functions, spectrograms, and line plots provided additional evidence supporting their existence.</p>
+                        <a href="https://github.com/shubhamrane29/galaxy-analysis"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="static/images/fras.jpg" alt="">
+                    <div class="layer">
+                        <h3>Facial Recogition Attendance System</h3>
+                        <p>Facial recognition attendance system uses computer vision and face recognition to identify individuals, track their attendance, and provide real-time data. It also offers a user-friendly GUI developed with Tkinter</p>
+                        <a href="https://github.com/shubhamrane29/face-recognition-attendance-system"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="static/images/wca.jpg" alt="">
+                    <div class="layer">
+                        <h3>WhatsApp Chat Analysis</h3>
+                        <p>It gives daily, weekly, and monthly analyses of personal chats, groups, or individual people in the group. The web app was developed on Streamlit and deployed on Render.</p>
+                        <a href="https://github.com/shubhamrane29/whatsapp-chat-analysis"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="https://github.com/shubhamrane29?tab=repositories" class="nav-button see-more">See More</a>
+        </div>
+    </div>
+
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">CONTACT ME</h1>
+                    <p><i class="fa-solid fa-envelope"></i>shubhrane2911@gmail.com</p>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/shubhamrane29/"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://medium.com/@shubhwrites"><i class="fa-brands fa-medium"></i></a>
+                        <a href="https://github.com/shubhamrane29"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <a href="static/images/Shubham_Rane_Resume.pdf" class="nav-button see-more resume-btn" download><i class="fa-solid fa-download"></i> Resume</a>
+                </div>
+                <div class="contact-right">
+                    <form action='/' method="POST" class="form">
+                        <h1 class="sub-title">The Razor News</h1>
+                        <p><i class="fa fa-laptop"></i>The AI News is delivered to you every day at 10 a.m.</p>
+                        <input type="text" class="name" name="name" placeholder="Your Name" required>
+                        <input type="email" class="email" name="email" placeholder="Your Email" required>
+                        <button type="submit" class="nav-button see-more resume-btn">Get News</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright © Shubham Rane</p>
+        </div>
+    </div>
+
+    
+        
+    {% endblock base %}
