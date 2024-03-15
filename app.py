@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime, timezone
+from sqlalchemy import event
+from datetime import date
 from dotenv import load_dotenv
 import os
 
@@ -10,19 +11,23 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQL_KEY")
 db = SQLAlchemy(app)
 
 class Subs(db.Model):
-    sno= db.Column(db.Integer, primary_key = True)
     name= db.Column(db.String(200), nullable=False)
-    email= db.Column(db.String(200), nullable=False)
-    date = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc).replace(microsecond=0))
+    email= db.Column(db.String(200), unique=True, primary_key=True, nullable=False)
+    date = db.Column(db.DateTime, default=date.today)
 
     def __repr__(self):
-        return f"{self.sno} - {self.title}"
+        return f"{self.name} - {self.email}"
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method=='POST':
         name = request.form['name']
         email = request.form['email']
+
+        existing_subscriber = Subs.query.filter_by(email=email).first()
+        if existing_subscriber:
+            return "Email already exists"
+        
         sub = Subs(name=name, email=email)
         db.session.add(sub)
         db.session.commit()
@@ -31,7 +36,7 @@ def home():
     all_subs = Subs.query.all()
     return render_template('index.html', all_subs=all_subs)
 
-@app.route('/razornews')
+@app.route('/razornews', methods=['GET', 'POST'])
 def ainew():
     return render_template ('ainews.html')
 
@@ -47,9 +52,20 @@ def redirect_to_index():
 def unsubscribe():
     if request.method == 'POST':
         email = request.form['email']
-        db.session.delete(email)
-        db.commit()
+        subscriber = Subs.query.filter_by(email=email).first()
+        if subscriber:
+            db.session.delete(subscriber)
+            db.session.commit()
+            return redirect('/resubscribe')
+        else:
+            return "Email not found"
     return render_template ('unsubscribe.html')
+
+@app.route('/resubscribe', methods=['GET', 'POST'])
+def resubscribe():
+    if request.method == 'POST':
+        return redirect('/razornews')
+    return render_template('resubscribe.html')
 
 if __name__ == '__main__':
     with app.app_context():
