@@ -231,7 +231,6 @@ nav ul li a:hover::after{
     border-radius: 10px;
     position: relative;
     overflow: hidden;
-    color: #ebebeb;
     z-index: 1;
 }
 
@@ -259,7 +258,6 @@ nav ul li a:hover::after{
     text-align: center;
     font-size: 14px;
     transition: height 0.3s;
-    color: #ebebeb;
     opacity: 97%;
 }
 
@@ -280,10 +278,6 @@ nav ul li a:hover::after{
     height: 60px;
     border-radius: 50%;
     text-align: center;
-}
-
-.work:hover img{
-    transform: scale(1.1);
 }
 
 .work:hover .layer{
