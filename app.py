@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import event
 from datetime import date
 from dotenv import load_dotenv
 import os
 
 app = Flask(__name__)
 load_dotenv()
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("SQL_KEY")
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///subs.db'
 db = SQLAlchemy(app)
 
 class Subs(db.Model):

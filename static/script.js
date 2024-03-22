@@ -18,6 +18,7 @@ function setRandomPosition(element, container) {
     element.style.left = randomLeft + 'px';
 }
 
+
 // JavaScript for handling tabs
 var tablinks = document.getElementsByClassName("tab-links");
 var tabcontents = document.getElementsByClassName("tab-contents");
