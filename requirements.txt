@@ -1,5 +1,4 @@
 Flask
-Flask-SQLAlchemy
+pymongo==4.6.2
 python-dotenv
 Gunicorn
-pymysql
