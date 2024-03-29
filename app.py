@@ -1,21 +1,11 @@
 from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
-from datetime import date
-from dotenv import load_dotenv
 import os
+import pymongo
+from dotenv import load_dotenv
 
 app = Flask(__name__)
+
 load_dotenv()
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///subs.db'
-db = SQLAlchemy(app)
-
-class Subs(db.Model):
-    name= db.Column(db.String(200), nullable=False)
-    email= db.Column(db.String(200), unique=True, primary_key=True, nullable=False)
-    date = db.Column(db.DateTime, default=date.today)
-
-    def __repr__(self):
-        return f"{self.name} - {self.email}"
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -23,17 +13,17 @@ def home():
         name = request.form['name']
         email = request.form['email']
 
-        existing_subscriber = Subs.query.filter_by(email=email).first()
-        if existing_subscriber:
-            return "Email already exists"
+        collection.create_index([("email", pymongo.ASCENDING)], unique=True)
+
+        try:
+            entry = {'name': name, 'email': email}
+            collection.insert_one(entry)
+            return redirect('/thankyou')
         
-        sub = Subs(name=name, email=email)
-        db.session.add(sub)
-        db.session.commit()
-        return redirect('/thankyou')
-    
-    all_subs = Subs.query.all()
-    return render_template('index.html', all_subs=all_subs)
+        except pymongo.errors.DuplicateKeyError:
+            return "Email already exists in the database"
+
+    return render_template('index.html')
 
 @app.route('/razornews', methods=['GET', 'POST'])
 def ainew():
@@ -51,14 +41,13 @@ def redirect_to_index():
 def unsubscribe():
     if request.method == 'POST':
         email = request.form['email']
-        subscriber = Subs.query.filter_by(email=email).first()
-        if subscriber:
-            db.session.delete(subscriber)
-            db.session.commit()
+        if collection.find_one({'email':email}):
+            rec = {'email': email}
+            collection.delete_one(rec)
             return redirect('/resubscribe')
         else:
             return "Email not found"
-    return render_template ('unsubscribe.html')
+    return render_template('unsubscribe.html')
 
 @app.route('/resubscribe', methods=['GET', 'POST'])
 def resubscribe():
@@ -67,7 +56,8 @@ def resubscribe():
     return render_template('resubscribe.html')
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-
+    client = pymongo.MongoClient(os.getenv('MONGO_URL'))
+    db = client["Website"]
+    collection = db['Subscribers']
+    
     app.run(host='0.0.0.0', port=8000)
