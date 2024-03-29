@@ -7,6 +7,11 @@ app = Flask(__name__)
 
 load_dotenv()
 
+client = pymongo.MongoClient(os.getenv('DATABASE_URL'))
+db = client["Website"]
+collection = db['Subscribers']
+    
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method=='POST':
@@ -56,8 +61,4 @@ def resubscribe():
     return render_template('resubscribe.html')
 
 if __name__ == '__main__':
-    client = pymongo.MongoClient(os.getenv('MONGO_URL'))
-    db = client["Website"]
-    collection = db['Subscribers']
-    
     app.run(host='0.0.0.0', port=8000)
